@@ -1,0 +1,224 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Data Analytics</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="left-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a id="logo">Vinay Mandala</a></h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>
+									<a href="Data Analytics.html">Projects</a>
+									<ul>
+										<li><a href="Data Analytics.html">Data Analytics</a></li>
+										<li><a href="Machine Learning.html">Machine Learning</a></li>
+										<li><a href="Tableau.html">Tableau</a></li>
+										<!-- <li><a href="Power BI.html">Power BI</a></li> -->
+										<li><a href="Kaggle.html">Kaggle</a></li>
+										<!-- <li><a href="Capstone Projects.html">Capstone Projects</a></li> -->
+										<li><a href="Python Tricks.html">Python Tricks</a></li>
+									</ul>
+								</li>
+								<li><a href="contact.html">Contact</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<article id="main" class="special">
+							<header>
+								<h2><a href="#">COVID-19 Data Analysis and Visualization</a></h2>
+							</header>
+							<a href="#" class="image featured"><img src="images/covid.jpg" alt="" /></a>
+							<p>
+								An analysis project focused on understanding the COVID-19 pandemic through data visualization and analysis.
+										This project involved gathering COVID-19 data
+										<a href="https://ourworldindata.org/coronavirus" target="_blank">
+											<strong>@Our World in Data</strong>
+										</a>, preprocessing it using Excel, and analyzing it using MySQL. 
+										The process was aimed at uncovering insights into the spread and impact of the virus.
+							</p>
+							<section>
+								<header>
+									<h3>Code Development and Procedures</h3>
+								</header>
+								<p>
+									In Excel, data was cleaned and formatted to ensure consistency and accuracy. 
+									This involved handling missing values, normalizing data formats for more in-depth analysis.
+									Using MySQL, we performed queries to extract meaningful statistics, such as the number of cases, deaths, 
+									and recoveries over time. I also analyzed the data by different dimensions such as location and time periods.
+								</p>
+								<p>
+									I downloaded COVID-19 data from the OWID website and created two separate Excel worksheets:
+									<ul>
+										<li>Covid Deaths</li>
+										<li>Covid Vaccinations</li>
+									</ul>
+									I converted the Excel sheets into CSV format and then imported them into MySQL using MySQL Workbench import function().
+									After importing the data, I adjusted the data types to ensure they were suitable for querying.
+								</p>
+								<header>
+									<h3>SQL queries</h3>
+								</header>
+								<pre style="font-family: Andale Mono, Lucida Console, Monaco, fixed, monospace; 
+												color: #000000; background-color: #eee;
+												font-size: 12px; border: 1px dashed #999999;
+												line-height: 14px; padding: 5px; 
+												overflow: auto; width: 100%">
+									<code style="color:#000000;word-wrap:normal;">
+-- Total Cases vs Total Deaths
+
+SELECT location, date, total_cases, total_deaths, (total_deaths / total_cases) * 100 AS DeathPercentage
+FROM Covid.CovidDeaths
+WHERE location LIKE '%states%' AND continent IS NOT NULL
+ORDER BY location, date;
+
+-- Countries with Highest Infection Rate Compared to Population
+
+SELECT location, population, MAX(total_cases) AS HighestInfectionCount, MAX((total_cases / population) * 100) AS PercentPopulationInfected
+FROM Covid.CovidDeaths
+GROUP BY location, population
+ORDER BY PercentPopulationInfected DESC;</code>
+								</pre>
+								<br>
+								<p>
+									These queries helped in extracting insights such as the percentage of deaths among cases, 
+									infection rates, and identifying regions with the highest impact.
+									I created views to simplify data visualization in Tableau. For example, to track the percentage of the population vaccinated.
+								</p>
+							</section>
+							<section>
+								<header>
+									<h3>Observations</h3>
+								</header>
+								<p>
+									The analysis revealed trends and patterns in the spread of COVID-19. 
+									Key findings included the identification of peak periods of infection, 
+									the effectiveness of various measures taken to curb the spread, and the impact of the virus on different regions.
+									Visualizations created from the data provided clear and impactful insights that can be used for understanding spread of virus over the world.
+									These included graphs showing the rise and fall of case numbers, maps indicating hotspots, and charts comparing the effectiveness of interventions across different regions.
+								</p>
+								<p>
+									Discover the full SQL scripts and data on my GitHub! Dive into the details at 
+									<a href="https://github.com/vinaysai99/Covid-Data-Exploration" target="_blank">
+										<strong>@Covid-Data-Exploration</strong>
+									</a>.
+								</p>
+							</section>
+						</article>
+						<hr />
+						<div class="row">
+							<article class="col-4 col-12-mobile special">
+								<header>
+									<h3>
+										<a href="https://github.com/vinaysai99/Covid-Data-Exploration" class="icon brands fa-github"><span class="label">GitHub</span></a>
+										<a href="https://github.com/vinaysai99/Covid-Data-Exploration">GitHub</a>
+									</h3>
+								</header>
+								<p>
+									Link to COVID data and preprocessing scripts, SQL Scripts and reference files.
+								</p>
+							</article>
+							<article class="col-4 col-12-mobile special">
+								<header>
+									<h3><a href="https://public.tableau.com/app/profile/vinay.mandala/viz/Covid19GlobalDataAnalysis_17180187987180/Dashboard1">Tableau</a></h3>
+								</header>
+								<p>
+									Link to Tableau Dashboard with several data visualization pages and filters.
+								</p>
+							</article>
+							<article class="col-4 col-12-mobile special">
+								<header>
+									<h3><a href="#">References</a></h3>
+								</header>
+								<p>
+									<ol>
+										<li><a href="https://medium.com/@odunthedatagirl/covid-19-data-analysis-project-using-excel-python-and-power-bi-bc9a6b3cf656" target="_blank">
+											<strong>Covid19 Medium Blog</strong>
+										</a></li>
+										<li><a href="https://ourworldindata.org/coronavirus" target="_blank">
+											<strong>Covid19 Data Source</strong>
+										</a></li>
+									</ol>
+								</p>
+							</article>
+						</div>
+					</div>
+
+				</div>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<section class="contact">
+									<header>
+										<h3>Let's Connect!</h3>
+										<h3>Join my tech community.</h3>
+									</header>
+									<p>Connect with me to stay updated on the latest in tech and join a dynamic community of enthusiasts. Engage, share, and explore together as we navigate the ever-evolving landscape of technology.</p>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
+										<li><a href="https://github.com/vinaysai99" class="icon brands fa-github"><span class="label">Github</span></a></li>
+											<li><a href="https://www.linkedin.com/in/vinay-mandala-41268a176/" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a></li>
+									</ul>
+								</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Vinay Mandala. All rights reserved.</li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
