@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Data Analytics</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="left-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a id="logo">Vinay Mandala</a></h1>
+							</header>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>
+									<a href="Data Analytics.html">Projects</a>
+									<ul>
+										<li><a href="Data Analytics.html">Data Analytics</a></li>
+										<li><a href="Machine Learning.html">Machine Learning</a></li>
+										<li><a href="Tableau.html">Tableau</a></li>
+										<!-- <li><a href="Power BI.html">Power BI</a></li> -->
+										<li><a href="Kaggle.html">Kaggle</a></li>
+										<!-- <li><a href="Capstone Projects.html">Capstone Projects</a></li> -->
+										<li><a href="Python Tricks.html">Python Tricks</a></li>
+									</ul>
+								</li>
+								<li><a href="contact.html">Contact</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<article id="main" class="special">
+							<header>
+								<h2><a href="#">Unraveling climate patterns and forecasting future</a></h2>
+								<p>
+									This project leverages advanced methods to analyze historical climate data and uncover hidden patterns, helping us understand and predict future climate conditions.
+								</p>
+							</header>
+							<a href="#" class="image featured"><img src="images/unraveling.png" alt="" /></a>
+							<p>
+								In this project, I created an interactive Smart Dashboard that combines climate data from the National Oceanic and Atmospheric Administration (NOAA) 
+								and employed ARIMA (AutoRegressive Integrated Moving Average) model to forecast weather. 
+								The dashboard delivers annual forecasts on a global scale, enabling users to explore climate patterns and trends across various regions. 
+								The project's main objective was to design a user-friendly platform that presents complex climate data in a simple and engaging format. 
+								The dashboard's adaptable design allows users to zoom into specific areas or view broad climate trends, providing a valuable tool for gaining insights into climate-related topics. 
+								By utilizing ARIMA models, I produced accurate forecasts for critical weather indicators, like Average Temperature.
+								Our dashboard focuses on being clear and easy to use, allowing users to understand and engage with the data effortlessly. 
+								Through this effort, I aim to raise climate awareness to address shifting weather patterns.
+
+							</p>
+							<section>
+								<header>
+									<h3>Data Preprocessing and Analysis</h3>
+								</header>
+								<p>
+									To address the complex challenge of understanding climate patterns and predicting future weather conditions, our methodology centers on a comprehensive approach that blends advanced data analysis techniques and predictive modeling.
+									<ol>
+										<li>We collected data from <a href="https://www.noaa.gov/" target="_blank"><strong>@NOAA</strong></a> – Climate data online</li>
+										<li>Parameters collected : Average Temperature, Minimum & Maximum Temperature</li>
+										<li>Over 224 countries with 600 climate stations data is collected.</li>
+									</ol>
+									With this extensive dataset, by using the application of various statistical and machine learning algorithms, I aimed at uncovering patterns and trends within the data.
+									So, I started with data preprocessing , mainly filling null data values using seasonal and monthly averages. 
+									A key aspect of our approach involves utilizing time series analysis techniques, including the widely recognized ARIMA (AutoRegressive Integrated Moving Average) models,
+									which are adept at capturing temporal dependencies and fluctuations in weather variables over time.
+								</p>
+								<header><h3>Stationarity Assessment: Augmented Dickey-Fuller (ADF) Test</h3></header>
+								<p>
+									<ol>
+										<li>Null Hypothesis (H0): The time series dataset contains a unit root, suggesting non-stationarity.</li>
+										<li>Alternative Hypothesis (H1): The time series dataset lacks a unit root, suggesting stationarity.</li>
+										<li>If the p-value is lower than the critical value (0.05), we reject the Null Hypothesis; otherwise, we accept it.
+											For our datasets, the majority have yielded results indicating rejection of the null hypothesis, implying that the datasets are stationary, as demonstrated below.</li>
+									</ol>
+									<a href="#" class="image centered"><img src="images/adf.png" alt="" /></a>
+								</p>
+								<header><h3>SARIMA model</h3></header>
+								<p>
+									SARIMA (Seasonal Autoregressive Integrated Moving Average) model is a powerful tool for time series forecasting, incorporating both trend and seasonal components. 
+									It builds upon ARIMA by considering seasonal variations, making it suitable for data with recurring patterns.
+									<ol>
+										<li>It builds upon ARIMA by considering seasonal variations, making it suitable for data with recurring patterns.</li>
+										<li>SARIMA parameters (p, d, q) are chosen based on autocorrelation and partial autocorrelation functions, while seasonal parameters (P, D, Q) are determined through seasonal differencing.</li>
+										<li>ACF: Identifies correlation between time series & lagged values.</li>
+										<li>PACF: Determines relationship between a point &  its lag, excluding intervening lags.</li>
+										<li>Interpretation: Significant spikes beyond confidence intervals indicate relationships.</li>
+										<li>Parameters: Utilized (3,0,0) for order and (0,1,1,12) for seasonal order. Trend: Specified 'c' for constant trend component.</li>
+											
+									</ol>
+								</p>
+								<header><h3>Model Validation</h3></header>
+									<p>
+										<ol><li>Current vs Predicted Values </li>
+											<li>Errors vs Predicted Values </li>
+											<li>Residuals Normality Check </li>
+											<li>Residuals Autocorrelation </li></ol>
+										<a href="#" class="image centered"><img src="images/unraveling valid.png" alt="" /></a>
+									</p>
+							</section>
+							<section>
+								<header>
+									<h3>Observations</h3>
+								</header>
+								<p>
+									<ol>
+										<li>Validation Results: SARIMA(3,0,0),(0,1,1,12),'c' model achieved an RMSE of 2.8908°C.</li>
+										<li>Represents a significant improvement, reducing RMSE by -69.62% compared to baseline model.</li>
+										<li>Unseen Data Baseline RMSE : 8.68°C </li>
+										<li>Unseen Data SARIMA RMSE : 3.86°C. Demonstrates a notable enhancement, with an overall improvement of 55.59%.</li>
+									</ol>
+								</p>
+								<p>
+									Discover the full Python data analysis,preprocessing scripts and data on my GitHub! Dive into the details at 
+									<a href="https://github.com/vinaysai99/World-Climate-Data-Analysis" target="_blank">
+										<strong>@World-Climate-Data-Analysis</strong>
+									</a>.
+								</p>
+							</section>
+						</article>
+						<hr />
+						<div class="row">
+							<article class="col-4 col-12-mobile special">
+								<header>
+									<h3>
+										<a href="https://github.com/vinaysai99/World-Climate-Data-Analysis" class="icon brands fa-github"><span class="label">GitHub</span></a>
+										<a href="https://github.com/vinaysai99/World-Climate-Data-Analysis">GitHub</a>
+									</h3>
+								</header>
+								<p style="text-align: center;">
+									<a href="https://github.com/vinaysai99/World-Climate-Data-Analysis" style="font-weight: bold;" target="_blank">Link</a> to Climate data project python scripts, SARIMA pipeline notebook and reference files.
+								</p>
+							</article>
+							<article class="col-4 col-12-mobile special">
+								<header>
+									<h3>
+										<a href="https://public.tableau.com/app/profile/vinay.mandala/viz/Unravelingclimatepatternsandforecastingfuture/Worldtempchange">Tableau</a>
+									</h3>
+								</header>
+								<p style="text-align: center;">
+									<a href="https://public.tableau.com/app/profile/vinay.mandala/viz/Unravelingclimatepatternsandforecastingfuture/Worldtempchange" style="font-weight: bold;" target="_blank">Link</a> to Tableau Dashboard with several data visualization pages and filters.
+								</p>
+							</article>
+							<article class="col-4 col-12-mobile special" style="text-align: center;">
+								<header>
+									<h3>References</h3>
+								</header>
+								<p>
+									<ol style="text-align: left; display: inline-block; padding-left: 0;">
+										<li><a href="https://www.kaggle.com/code/leandrovrabelo/climate-change-forecast-sarima-model/notebook" target="_blank">
+											<strong>SARIMA Kaggle Notebook</strong>
+										</a></li>
+										<li><a href="https://towardsdatascience.com/acquire-and-analyze-weather-and-climate-data-with-python-and-tableau-4878e8759152" target="_blank">
+											<strong>Climate Data Blog TDS</strong>
+										</a></li>
+									</ol>
+								</p>
+							</article>
+						</div>
+					</div>
+
+				</div>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<section class="contact">
+									<header>
+										<h3>Let's Connect!</h3>
+										<h3>Join my tech community.</h3>
+									</header>
+									<p>Connect with me to stay updated on the latest in tech and join a dynamic community of enthusiasts. Engage, share, and explore together as we navigate the ever-evolving landscape of technology.</p>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
+										<li><a href="https://github.com/vinaysai99" class="icon brands fa-github"><span class="label">Github</span></a></li>
+											<li><a href="https://www.linkedin.com/in/vinay-mandala-41268a176/" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a></li>
+									</ul>
+								</section>
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Vinay Mandala. All rights reserved.</li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
